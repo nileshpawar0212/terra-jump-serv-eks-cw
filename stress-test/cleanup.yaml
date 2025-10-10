@@ -1,0 +1,2 @@
+#!/bin/bash
+kubectl delete deployment cpu-stress memory-stress restart-test --ignore-not-found=true

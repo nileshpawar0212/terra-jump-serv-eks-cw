@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restart-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: restart-test
+  template:
+    metadata:
+      labels:
+        app: restart-test
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: failing-app
+        image: busybox
+        command: ["sh", "-c", "sleep 30; exit 1"]
