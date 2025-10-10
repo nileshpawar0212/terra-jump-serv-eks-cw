@@ -87,3 +87,10 @@ resource "aws_security_group_rule" "nodes_to_cluster" {
   security_group_id        = module.eks.cluster_primary_security_group_id
   description              = "Allow all traffic from the EKS nodes"
 }
+
+module "cloudwatch" {
+  source = "./cloudwatch"
+
+  cluster_name       = var.cluster_name
+  notification_email = var.notification_email
+}
