@@ -5,8 +5,7 @@ Create S3 bucket 1st
 aws s3api create-bucket --bucket terra-jenkins-eks1 --region us-east-1
 
 
-# 
-Test Components:
+# Test Components
 
 cpu-stress.yaml - High CPU load (triggers >50% CPU alarm)
 
@@ -33,3 +32,5 @@ Node memory > 50%
 Pod restarts > 5
 
 The tests will automatically trigger your CloudWatch alarms and send notifications to techieegale@gmail.com.
+
+# Delete additional resources and access if attached to additional to cluster
