@@ -16,9 +16,9 @@ resource "aws_cloudwatch_metric_alarm" "cluster_failed_requests" {
   evaluation_periods  = "2"
   metric_name         = "cluster_failed_request_count"
   namespace           = "ContainerInsights"
-  period              = "300"
+  period              = 60
   statistic           = "Sum"
-  threshold           = "10"
+  threshold           = "5"
   alarm_description   = "EKS API server failed requests"
   alarm_actions       = [aws_sns_topic.eks_alerts.arn]
 
@@ -33,9 +33,9 @@ resource "aws_cloudwatch_metric_alarm" "node_cpu_high" {
   evaluation_periods  = "2"
   metric_name         = "node_cpu_utilization"
   namespace           = "ContainerInsights"
-  period              = "300"
+  period              = 60
   statistic           = "Average"
-  threshold           = "80"
+  threshold           = "50"
   alarm_description   = "EKS node CPU utilization high"
   alarm_actions       = [aws_sns_topic.eks_alerts.arn]
 
@@ -50,9 +50,9 @@ resource "aws_cloudwatch_metric_alarm" "node_memory_high" {
   evaluation_periods  = "2"
   metric_name         = "node_memory_utilization"
   namespace           = "ContainerInsights"
-  period              = "300"
+  period              = 60
   statistic           = "Average"
-  threshold           = "80"
+  threshold           = "50"
   alarm_description   = "EKS node memory utilization high"
   alarm_actions       = [aws_sns_topic.eks_alerts.arn]
 
@@ -67,7 +67,7 @@ resource "aws_cloudwatch_metric_alarm" "pod_restart_high" {
   evaluation_periods  = "1"
   metric_name         = "pod_number_of_container_restarts"
   namespace           = "ContainerInsights"
-  period              = "300"
+  period              = 60
   statistic           = "Sum"
   threshold           = "5"
   alarm_description   = "High number of pod restarts"
